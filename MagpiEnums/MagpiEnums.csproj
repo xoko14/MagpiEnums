@@ -5,6 +5,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>11</LangVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>MagpiEnums</Title>
+        <Authors>xoko14</Authors>
+        <PackageProjectUrl>https://github.com/xoko14/MagpiEnums/</PackageProjectUrl>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/xoko14/MagpiEnums/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/xoko14/MagpiEnums/</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
