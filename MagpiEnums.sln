@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagpiEnums", "MagpiEnums\MagpiEnums.csproj", "{1C4C57D5-CEE0-4118-B578-11EF8E7750C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{1DD5F683-EDE5-4AFE-A405-296DCD95997F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagpiEnums.Example", "MagpiEnums.Example\MagpiEnums.Example.csproj", "{F66E2F29-3D55-44F3-825C-A902342A724C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C4C57D5-CEE0-4118-B578-11EF8E7750C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4C57D5-CEE0-4118-B578-11EF8E7750C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4C57D5-CEE0-4118-B578-11EF8E7750C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4C57D5-CEE0-4118-B578-11EF8E7750C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F66E2F29-3D55-44F3-825C-A902342A724C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F66E2F29-3D55-44F3-825C-A902342A724C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F66E2F29-3D55-44F3-825C-A902342A724C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F66E2F29-3D55-44F3-825C-A902342A724C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
