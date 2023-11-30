@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using System.Text;
 using MagpiEnums.Extensions;
 using Microsoft.CodeAnalysis;
@@ -7,20 +8,30 @@ using Microsoft.CodeAnalysis.Text;
 namespace MagpiEnums.SourceGeneration;
 
 [Generator]
-public class EnumerationGenerator: ISourceGenerator
+public class EnumerationGenerator: IIncrementalGenerator
 {
-    public void Initialize(GeneratorInitializationContext context)
+    public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        context.RegisterForSyntaxNotifications(() => new EnumerationSyntaxReciever());
+        var recordProvider = context.SyntaxProvider
+            .ForAttributeWithMetadataName("MagpiEnums.EnumerationAttribute",
+                (node, _) => node is RecordDeclarationSyntax,
+                GetInfo
+            );
+        context.RegisterSourceOutput(recordProvider, Generate);
     }
 
-    public void Execute(GeneratorExecutionContext context)
+    private (RecordDeclarationSyntax Node, string? Namespace) GetInfo(GeneratorAttributeSyntaxContext ctx, CancellationToken _)
     {
-        var syntaxReceiver = context.SyntaxReceiver as EnumerationSyntaxReciever;
+        var type = (INamedTypeSymbol) ctx.TargetSymbol;
+        return (
+            (RecordDeclarationSyntax)ctx.TargetNode,
+            type.ContainingNamespace.IsGlobalNamespace ? null : type.ContainingNamespace.ToString()
+        );
+    }
 
-        var targetRecord = syntaxReceiver?.TargetRecord;
-        if(targetRecord is null)
-            return;
+    public void Generate(SourceProductionContext context, (RecordDeclarationSyntax TargetRecord, string? Namespace) payload)
+    {
+        var (targetRecord, targetNamespace) = payload;
 
         var isAbstract = targetRecord.Modifiers.Any(m => m.ToString() == "abstract");
         var isPartial = targetRecord.Modifiers.Any(m => m.ToString() == "partial");
@@ -47,11 +58,12 @@ public class EnumerationGenerator: ISourceGenerator
                 if (nameAttribute is not null)
                     name = nameAttribute.ArgumentList?.Arguments.FirstOrDefault()?.ToString()?.Trim('"') ?? name;
 
-                //jsonDerivedTypeAttrs += $"\n[JsonDerivedType(typeof({rds.Identifier}), \"{name}\")]";
+                jsonDerivedTypeAttrs += $"\n[JsonDerivedType(typeof({rds.Identifier}), \"{name}\")]";
             }
         }
 
         var sourceText = SourceText.From(@$"
+{(targetNamespace is null? "": $"namespace {targetNamespace};")}
 using System.Text.Json.Serialization;
 [JsonPolymorphic(TypeDiscriminatorPropertyName = ""{discriminatorPropertyName}"")]{jsonDerivedTypeAttrs}
 public abstract partial record {targetRecord.Identifier}
@@ -61,4 +73,5 @@ public abstract partial record {targetRecord.Identifier}
         
         context.AddSource($"{targetRecord.Identifier}Enumeration.g.cs", sourceText);
     }
+
 }

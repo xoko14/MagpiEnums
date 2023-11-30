@@ -1,20 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
-namespace MagpiEnums.Example;
 using System.Text.Json;
 using MagpiEnums;
+using MagpiEnums.Example;
 
 [Enumeration]
-public abstract partial record LoadStatus
+public abstract partial record TestEnumeration()
 {
-    public record Loading(string message) : LoadStatus;
-    public record Loaded(Content Content) : LoadStatus;
-    public record Error(string message) : LoadStatus;
-}
-
-public class Content
-{
-    public string Title { get; set; }
-    public string Description { get; set; }
+    
 }
 
 public static partial class Program
