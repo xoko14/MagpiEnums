@@ -6,25 +6,23 @@
         <Nullable>enable</Nullable>
         <LangVersion>11</LangVersion>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <IncludeBuildOutput>false</IncludeBuildOutput>
         <Title>MagpiEnums</Title>
         <Authors>xoko14</Authors>
         <PackageProjectUrl>https://github.com/xoko14/MagpiEnums/</PackageProjectUrl>
         <PackageLicenseUrl>https://raw.githubusercontent.com/xoko14/MagpiEnums/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/xoko14/MagpiEnums/</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
-    </ItemGroup>
-
+    
 <ItemGroup>
+	<ProjectReference Include="..\MagpiEnums.SourceGeneration\MagpiEnums.SourceGeneration.csproj" OutputItemType="Analyzer" />
     <!-- Package the generator in the analyzer directory of the nuget package -->
-    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="true" />
+    <None Include="$(OutputPath)\MagpiEnums.SourceGeneration.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

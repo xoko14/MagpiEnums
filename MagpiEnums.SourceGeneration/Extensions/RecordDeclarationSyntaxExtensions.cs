@@ -1,7 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace MagpiEnums.Extensions;
+namespace MagpiEnums.SourceGeneration.Extensions;
 
 public static class RecordDeclarationSyntaxExtensions
 {

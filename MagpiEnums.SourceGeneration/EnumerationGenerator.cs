@@ -1,6 +1,5 @@
-using System.Reflection.Metadata;
 using System.Text;
-using MagpiEnums.Extensions;
+using MagpiEnums.SourceGeneration.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
