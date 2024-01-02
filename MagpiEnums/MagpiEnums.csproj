@@ -11,7 +11,7 @@
         <PackageProjectUrl>https://github.com/xoko14/MagpiEnums/</PackageProjectUrl>
         <PackageLicenseUrl>https://raw.githubusercontent.com/xoko14/MagpiEnums/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/xoko14/MagpiEnums/</RepositoryUrl>
-        <PackageReadmeFile>../README.md</PackageReadmeFile>
+        <PackageReadmeFile>..\\README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
