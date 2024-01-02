@@ -34,10 +34,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 8.x
-    - name: Build NuGet package
+    - name: Build source generatorNuGet package
+      run: dotnet build MagpiEnums.SourceGenerator/MagpiEnums.SourceGenerator.csproj -c Release
+    - name: Build and Pack NuGet package
       run: dotnet build MagpiEnums/MagpiEnums.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
-    - name: Pack NuGet package
-      run: dotnet pack MagpiEnums/MagpiEnums.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
     - name: Upload NuGet package to GitHub
       uses: actions/upload-artifact@v2
       with:
