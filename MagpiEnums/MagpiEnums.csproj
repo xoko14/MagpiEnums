@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>11</LangVersion>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Title>MagpiEnums</Title>
         <Authors>xoko14</Authors>
         <PackageProjectUrl>https://github.com/xoko14/MagpiEnums/</PackageProjectUrl>
