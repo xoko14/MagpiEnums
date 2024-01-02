@@ -16,9 +16,9 @@
 
     
 <ItemGroup>
-	<ProjectReference Include="..\MagpiEnums.SourceGeneration\MagpiEnums.SourceGeneration.csproj" OutputItemType="Analyzer" />
+	<!--<ProjectReference Include="..\MagpiEnums.SourceGeneration\MagpiEnums.SourceGeneration.csproj" OutputItemType="Analyzer" />-->
     <!-- Package the generator in the analyzer directory of the nuget package -->
-    <None Include="$(OutputPath)\MagpiEnums.SourceGeneration.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="..\MagpiEnums.SourceGeneration\bin\$(Configuration)\netstandard2.0\MagpiEnums.SourceGeneration.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
