@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <LangVersion>11</LangVersion>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
         <Title>MagpiEnums</Title>
         <Authors>xoko14</Authors>
         <PackageProjectUrl>https://github.com/xoko14/MagpiEnums/</PackageProjectUrl>
