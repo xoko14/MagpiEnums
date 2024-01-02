@@ -55,11 +55,9 @@ jobs:
       uses: actions/download-artifact@v1.0.0
       with:
         name: nugetPackage
-    - name: Prep packages
-      run: dotnet nuget add source --username xoko14 --password ${{ secrets.NUGET_PACKAGE_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/xoko14/index.json"
-    - name: Push package to GitHub packages 
+    - name: Push package to NuGet packages 
       if: needs.build.outputs.CommitsSinceVersionSource > 0 #Only release if there has been a commit/version change  
-      run: dotnet nuget push nugetPackage/*.nupkg --api-key ${{ secrets.NUGET_PACKAGE_TOKEN }}  --source "github"
+      run: dotnet nuget push nugetPackage/*.nupkg --api-key ${{ secrets.NUGET_PACKAGE_TOKEN }}  --source https://api.nuget.org/v3/index.json
     
     #Create release
     - name: Create Release
