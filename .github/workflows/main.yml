@@ -35,7 +35,7 @@ jobs:
       with:
         dotnet-version: 8.x
     - name: Build source generatorNuGet package
-      run: dotnet build MagpiEnums.SourceGenerator/MagpiEnums.SourceGenerator.csproj -c Release
+      run: dotnet build MagpiEnums.SourceGeneration/MagpiEnums.SourceGeneration.csproj -c Release
     - name: Build and Pack NuGet package
       run: dotnet build MagpiEnums/MagpiEnums.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
     - name: Upload NuGet package to GitHub
